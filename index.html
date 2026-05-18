@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Developer Web Profesional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #3b82f6;
+        --primary-light: #60a5fa;
+        --primary-dark: #1e40af;
+        --accent: #06b6d4;
+        --accent-dark: #0891b2;
+        --text-primary: #ffffff;
+        --text-secondary: #cbd5e1;
+        --text-tertiary: #94a3b8;
+        --bg-dark: #0f172a;
+        --bg-darker: #020617;
+        --bg-card: #1e293b;
+        --border-color: rgba(51, 65, 85, 0.3);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(
+          135deg,
+          var(--bg-darker) 0%,
+          var(--bg-dark) 100%
+        );
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+        background-attachment: fixed;
+      }
+
+      /* ==================== NAVIGATION ==================== */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(10px);
+        padding: 1.2rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        border-bottom: 1px solid var(--border-color);
+        animation: slideDown 0.6s ease-out;
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .logo {
+        font-size: 1.4rem;
+        font-weight: 700;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--accent) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.5px;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2.5rem;
+      }
+
+      nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        position: relative;
+        transition: color 0.3s ease;
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+
+      nav a:hover {
+        color: var(--primary);
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        transition: width 0.3s ease;
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      /* ==================== HERO SECTION ==================== */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        padding-top: 80px;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(59, 130, 246, 0.15) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        top: 50%;
+        left: -10%;
+        transform: translateY(-50%);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(6, 182, 212, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        bottom: -50px;
+        right: -50px;
+        animation: float 8s ease-in-out infinite reverse;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-30px);
+        }
+      }
+
+      .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        max-width: 1200px;
+        width: 100%;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-text h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      .hero-text h1 span {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--accent) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-text p {
+        font-size: 1.15rem;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        animation: fadeInUp 0.8s ease-out 0.1s backwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+      }
+
+      .btn {
+        padding: 0.9rem 2.2rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+      }
+
+      .btn-secondary:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+      }
+
+      .hero-image {
+        position: relative;
+        animation: fadeInUp 0.8s ease-out 0.3s backwards;
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
+        transition: transform 0.3s ease;
+        border: 1px solid var(--border-color);
+      }
+
+      .hero-image:hover img {
+        transform: scale(1.05);
+      }
+
+      /* ==================== PROJECTS SECTION ==================== */
+      .projects {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .section-title h2 span {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section-title p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        animation: scaleIn 0.6s ease-out both;
+      }
+
+      .project-card:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .project-card:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .project-card:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      .project-card:nth-child(4) {
+        animation-delay: 0.3s;
+      }
+      .project-card:nth-child(5) {
+        animation-delay: 0.4s;
+      }
+      .project-card:nth-child(6) {
+        animation-delay: 0.5s;
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary);
+        box-shadow: 0 20px 50px rgba(59, 130, 246, 0.2);
+      }
+
+      .project-image {
+        width: 100%;
+        height: 220px;
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.1),
+          rgba(6, 182, 212, 0.1)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.1);
+      }
+
+      .project-info {
+        padding: 1.5rem;
+      }
+
+      .project-info h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+      }
+
+      .project-info p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .project-tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.2rem;
+      }
+
+      .tag {
+        background: rgba(59, 130, 246, 0.15);
+        color: var(--primary-light);
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-links a {
+        flex: 1;
+        padding: 0.7rem;
+        text-align: center;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+      }
+
+      .project-links a:first-child {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      .project-links a:first-child:hover {
+        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .project-links a:last-child:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      /* ==================== ABOUT SECTION ==================== */
+      .about {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .about-text h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+
+      .about-text h2 span {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .about-text p {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+        font-size: 1rem;
+      }
+
+      .skills-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .skill-item {
+        background: var(--bg-card);
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid var(--primary);
+        transition: all 0.3s ease;
+      }
+
+      .skill-item:hover {
+        border-left-color: var(--accent);
+        transform: translateX(5px);
+      }
+
+      .skill-item strong {
+        color: var(--primary);
+      }
+
+      /* ==================== CONTACT SECTION ==================== */
+      .contact {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .contact-content {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 3rem;
+        text-align: center;
+      }
+
+      .contact-content h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .contact-content h2 span {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .contact-content p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .contact-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .contact-links a:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+      }
+
+      /* ==================== FOOTER ==================== */
+      footer {
+        text-align: center;
+        padding: 2rem;
+        border-top: 1px solid var(--border-color);
+        color: var(--text-tertiary);
+        font-size: 0.9rem;
+      }
+
+      /* ==================== RESPONSIVE ==================== */
+      @media (max-width: 768px) {
+        nav {
+          padding: 1rem;
+        }
+
+        nav ul {
+          gap: 1.5rem;
+          font-size: 0.9rem;
+        }
+
+        .hero-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          padding: 0 1rem;
+        }
+
+        .hero-text h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-text p {
+          font-size: 1rem;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .about-text h2 {
+          font-size: 2rem;
+        }
+
+        .skills-list {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-content {
+          padding: 2rem 1rem;
+        }
+
+        .contact-content h2 {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-text h1 {
+          font-size: 2rem;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        nav ul {
+          gap: 1rem;
+        }
+
+        nav a {
+          font-size: 0.85rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">Dev Portfolio</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Halo, Saya <span>Developer Web</span> Profesional</h1>
+          <p>
+            Saya membangun website dan aplikasi web yang responsif, cepat, dan
+            user-friendly. Siap untuk freelance project atau bergabung dengan
+            tim kamu.
+          </p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
+            <a href="#projects" class="btn btn-secondary">Lihat Projects</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="assets/candri.png" alt="Developer" />
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <div class="section-title">
+        <h2>Featured <span>Projects</span></h2>
+        <p>Berikut adalah beberapa project yang telah saya kerjakan</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 220'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%' y1='0%' x2='100%' y2='100%'%3E%3Cstop offset='0%' style='stop-color:%233b82f6'/%3E%3Cstop offset='100%' style='stop-color:%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g1)' width='400' height='220'/%3E%3C/svg%3E"
+              alt="Project 1"
+            />
+          </div>
+          <div class="project-info">
+            <h3>E-Commerce Platform</h3>
+            <p>
+              Platform e-commerce modern dengan fitur cart, payment gateway, dan
+              admin dashboard.
+            </p>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MongoDB</span>
+            </div>
+            <div class="project-links">
+              <a href="#">Live Demo</a>
+              <a href="#">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 220'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0%' y1='0%' x2='100%' y2='100%'%3E%3Cstop offset='0%' style='stop-color:%2306b6d4'/%3E%3Cstop offset='100%' style='stop-color:%239333ea'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g2)' width='400' height='220'/%3E%3C/svg%3E"
+              alt="Project 2"
+            />
+          </div>
+          <div class="project-info">
+            <h3>Task Management App</h3>
+            <p>
+              Aplikasi manajemen tugas dengan real-time collaboration dan
+              notification system.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Vue.js</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Tailwind</span>
+            </div>
+            <div class="project-links">
+              <a href="#">Live Demo</a>
+              <a href="#">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 220'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0%' y1='0%' x2='100%' y2='100%'%3E%3Cstop offset='0%' style='stop-color:%239333ea'/%3E%3Cstop offset='100%' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g3)' width='400' height='220'/%3E%3C/svg%3E"
+              alt="Project 3"
+            />
+          </div>
+          <div class="project-info">
+            <h3>Portfolio Website</h3>
+            <p>
+              Website portfolio dengan design modern, animasi smooth, dan SEO
+              optimized.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">Framer Motion</span>
+              <span class="tag">CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="#">Live Demo</a>
+              <a href="#">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Tentang <span>Saya</span></h2>
+          <p>
+            Saya adalah seorang developer web yang passionate dalam menciptakan
+            solusi digital yang inovatif dan user-centric. Dengan pengalaman
+            lebih dari 3 tahun, saya telah membantu puluhan klien mewujudkan
+            visi mereka menjadi kenyataan.
+          </p>
+          <p>
+            Saya ahli dalam frontend development dengan React, Vue.js, dan
+            teknologi terbaru lainnya. Saya juga memahami backend development,
+            database, dan deployment untuk menciptakan aplikasi full-stack yang
+            robust.
+          </p>
+
+          <div class="skills-list">
+            <div class="skill-item">
+              <strong>Frontend:</strong> React, Vue.js, Next.js
+            </div>
+            <div class="skill-item">
+              <strong>Backend:</strong> Node.js, Express, Python
+            </div>
+            <div class="skill-item">
+              <strong>Database:</strong> MongoDB, MySQL, Firebase
+            </div>
+            <div class="skill-item">
+              <strong>Tools:</strong> Git, Docker, Webpack
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <img
+            src="assets/about.candri.png"
+            alt="About"
+            style="width: 100%; border-radius: 12px"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="section-title">
+        <h2>Mari Kita <span>Bekerja</span> Sama</h2>
+        <p>Hubungi saya untuk diskusi project atau penawaran freelance</p>
+      </div>
+
+      <div class="contact-content">
+        <h2>Siap untuk <span>Project</span> Selanjutnya?</h2>
+        <p>
+          Saya terbuka untuk freelance, kontrak, atau permanent position.
+          Hubungi saya melalui channel di bawah ini.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:candripanjaitan16@gmail.com" target="_blank"
+            ><i data-feather="mail"></i>Email</a
+          >
+          <a href="https://linkedin.com/in/candripanjaitan" target="_blank"
+            ><i data-feather="linkedin"></i> LinkedIn</a
+          >
+          <a href="https://github.com/candripanjaitan16" target="_blank"
+            ><i data-feather="github"></i> GitHub</a
+          >
+          <a href="https://wa.me/6282166983566" target="_blank"><i data-feather="send"></i> WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Developer Web Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+  </body>
+</html>
